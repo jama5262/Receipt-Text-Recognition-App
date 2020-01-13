@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startPageActivity">
+
+    <fragment
+        android:id="@+id/startPageActivity"
+        android:name="com.jama.receipttextrecognitionapp.StartPageActivity"
+        android:label="fragment_start_page"
+        tools:layout="@layout/fragment_start_page" >
+        <action
+            android:id="@+id/action_startPageActivity_to_cameraActivity"
+            app:destination="@id/cameraActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraActivity"
+        android:name="com.jama.receipttextrecognitionapp.CameraActivity"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
+</navigation>
