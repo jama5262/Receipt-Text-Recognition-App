@@ -5,14 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.fragment_start_page.view.*
 
 class StartPageActivity : Fragment() {
+
+    private lateinit var rootView: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_start_page, container, false)
+        rootView = inflater.inflate(R.layout.fragment_start_page, container, false)
+
+        rootView.buttonStart.setOnClickListener {
+            rootView.findNavController().navigate(R.id.action_startPageActivity_to_cameraActivity)
+        }
+
+        return rootView
     }
 }
