@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <com.jama.receipttextrecognitionapp.custom_views.CustomButton
-        android:id="@+id/customButton2"
+        android:id="@+id/buttonStart"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/comfortaa_bold"
-        android:text="A simple app to detect the total cost of a receipt"
+        android:text="A simple boring app tthat detects the total cost of a receipt"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
