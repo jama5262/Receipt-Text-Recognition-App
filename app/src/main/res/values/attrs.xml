@@ -4,7 +4,6 @@
         <attr name="buttonColor" format="enum">
             <enum name="green" value="0"/>
             <enum name="red" value="1"/>
-            <enum name="blue" value="2"/>
         </attr>
     </declare-styleable>
 </resources>
