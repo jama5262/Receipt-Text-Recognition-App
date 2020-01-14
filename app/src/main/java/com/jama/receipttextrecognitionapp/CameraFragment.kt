@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.camera.core.*
 import androidx.core.app.ActivityCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
 import com.google.firebase.ml.vision.FirebaseVision
@@ -35,7 +36,9 @@ class CameraFragment : Fragment() {
         rootView = inflater.inflate(R.layout.fragment_camera, container, false)
 
         rootView.buttonCapture.setOnClickListener {
-            capture()
+//            capture()
+            val bundle = bundleOf("imagePath" to "JAMA MOHAMED")
+            rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)
         }
 
         return rootView
