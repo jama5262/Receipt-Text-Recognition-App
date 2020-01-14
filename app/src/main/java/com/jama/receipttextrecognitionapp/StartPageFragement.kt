@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_start_page.view.*
 
-class StartPageActivity : Fragment() {
+class StartPageFragement : Fragment() {
 
     private lateinit var rootView: View
 

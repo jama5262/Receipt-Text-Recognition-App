@@ -38,7 +38,6 @@ class CustomButton: Button {
         return when(value) {
             0 -> R.drawable.green_button
             1 -> R.drawable.red_button
-            2 -> R.drawable.blue_button
             else -> R.drawable.green_button
         }
     }

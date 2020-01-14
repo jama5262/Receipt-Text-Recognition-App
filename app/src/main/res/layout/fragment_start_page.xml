@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".StartPageActivity">
+    tools:context=".StartPageFragement">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/comfortaa_bold"
-            android:text="A simple boring app tthat detects the total cost of a receipt"
+            android:text="A simple boring app that detects the total cost of a receipt"
             android:textAlignment="center"
             android:textColor="@android:color/background_dark"
             android:textSize="18sp"

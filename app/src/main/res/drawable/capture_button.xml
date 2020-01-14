@@ -5,29 +5,45 @@
         <layer-list>
             <item android:top="4.5dp">
                 <shape android:shape="oval">
-                    <solid android:color="#2979FF"/>
+                    <solid android:color="#00E676"/>
                     <corners android:radius="13dp"/>
                 </shape>
             </item>
 
         </layer-list>
     </item>
+    <item android:state_enabled="false">
+        <layer-list>
+            <item >
+                <shape android:shape="oval">
+                    <solid android:color="#37474F"/>
+                    <corners android:radius="13dp"/>
+                </shape>
+            </item>
+
+            <item android:bottom="4.5dp">
+                <shape android:shape="oval">
+                    <solid android:color="#78909C"/>
+                    <corners android:radius="13dp"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
     <item>
         <layer-list>
             <item >
                 <shape android:shape="oval">
-                    <solid android:color="#1565C0"/>
+                    <solid android:color="#00C853"/>
                     <corners android:radius="13dp"/>
                 </shape>
             </item>
 
-            <item android:bottom="4.5dp" android:left="-1dp" android:right="-1dp">
+            <item android:bottom="4.5dp">
                 <shape android:shape="oval">
-                    <solid android:color="#2979FF"/>
+                    <solid android:color="#00E676"/>
                     <corners android:radius="13dp"/>
                 </shape>
             </item>
-
         </layer-list>
     </item>
 </selector>
