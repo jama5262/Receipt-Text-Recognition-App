@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startPageActivity">
+    app:startDestination="@id/loadingFragment">
 
     <fragment
         android:id="@+id/startPageActivity"
@@ -41,5 +41,17 @@
         <argument
             android:name="imagePath"
             app:argType="string" />
+        <action
+            android:id="@+id/action_loadingFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.jama.receipttextrecognitionapp.ResultsFragment"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" >
+        <action
+            android:id="@+id/action_resultsFragment_to_startPageActivity"
+            app:destination="@id/startPageActivity" />
     </fragment>
 </navigation>

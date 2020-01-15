@@ -6,6 +6,7 @@ import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.util.Rational
 import android.util.Size
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,9 +37,7 @@ class CameraFragment : Fragment() {
         rootView = inflater.inflate(R.layout.fragment_camera, container, false)
 
         rootView.buttonCapture.setOnClickListener {
-//            capture()
-            val bundle = bundleOf("imagePath" to "JAMA MOHAMED")
-            rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)
+            capture()
         }
 
         return rootView
@@ -55,7 +54,10 @@ class CameraFragment : Fragment() {
     }
 
     private fun startCamera() {
-        val previewConfig = PreviewConfig.Builder().build()
+        val previewConfig = PreviewConfig.Builder()
+            .setTargetAspectRatio(Rational (rootView.textureView.width, rootView.textureView.height))
+            .setTargetResolution(Size (rootView.textureView.width, rootView.textureView.height))
+            .build()
         val preview = Preview(previewConfig)
 
         preview.setOnPreviewOutputUpdateListener {
@@ -65,6 +67,7 @@ class CameraFragment : Fragment() {
 
         val imageCaptureConfig = ImageCaptureConfig.Builder()
             .setTargetRotation(activity!!.windowManager.defaultDisplay.rotation)
+            .setCaptureMode(ImageCapture.CaptureMode.MIN_LATENCY)
             .build()
 
         imageCapture = ImageCapture(imageCaptureConfig)
@@ -84,19 +87,12 @@ class CameraFragment : Fragment() {
                     rootView.progressBar.visibility = View.GONE
                 }
                 override fun onImageSaved(file: File) {
-                    Log.e("jjj", "error -> ${file.absolutePath}")
                     rootView.progressBar.visibility = View.GONE
-                    rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment)
+                    Log.e("jjj", "success -> ${file.absolutePath}")
+                    val bundle = bundleOf("imagePath" to file.absolutePath)
+                    rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)
                 }
             })
-    }
-
-    private fun rotationDegreesToFirebaseRotation(rotationDegrees: Int) = when (rotationDegrees) {
-        0 -> FirebaseVisionImageMetadata.ROTATION_0
-        90 -> FirebaseVisionImageMetadata.ROTATION_90
-        180 -> FirebaseVisionImageMetadata.ROTATION_180
-        270 -> FirebaseVisionImageMetadata.ROTATION_270
-        else -> throw IllegalArgumentException("Rotation $rotationDegrees not supported")
     }
 
     private fun checkPermissions() {
