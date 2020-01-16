@@ -36,6 +36,8 @@ class CameraFragment : Fragment() {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_camera, container, false)
 
+        rootView.textViewMessage.visibility = View.GONE
+
         rootView.buttonCapture.setOnClickListener {
             capture()
         }
@@ -77,6 +79,7 @@ class CameraFragment : Fragment() {
 
     private fun capture() {
         rootView.progressBar.visibility = View.VISIBLE
+        rootView.textViewMessage.visibility = View.VISIBLE
         rootView.buttonCapture.isEnabled = false
         val file = File(activity!!.externalMediaDirs.first(), "${System.currentTimeMillis()}.jpg")
         imageCapture.takePicture(file,
@@ -85,9 +88,11 @@ class CameraFragment : Fragment() {
                                      message: String, exc: Throwable?) {
                     Log.e("jjj", "error -> $message")
                     rootView.progressBar.visibility = View.GONE
+                    rootView.textViewMessage.visibility = View.GONE
                 }
                 override fun onImageSaved(file: File) {
                     rootView.progressBar.visibility = View.GONE
+                    rootView.textViewMessage.visibility = View.GONE
                     Log.e("jjj", "success -> ${file.absolutePath}")
                     val bundle = bundleOf("imagePath" to file.absolutePath)
                     rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)

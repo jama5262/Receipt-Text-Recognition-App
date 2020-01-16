@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loadingFragment">
+    app:startDestination="@id/startPageActivity">
 
     <fragment
         android:id="@+id/startPageActivity"
@@ -43,13 +43,18 @@
             app:argType="string" />
         <action
             android:id="@+id/action_loadingFragment_to_resultsFragment"
-            app:destination="@id/resultsFragment" />
+            app:destination="@id/resultsFragment"
+            app:popUpTo="@id/loadingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/resultsFragment"
         android:name="com.jama.receipttextrecognitionapp.ResultsFragment"
         android:label="fragment_results"
         tools:layout="@layout/fragment_results" >
+        <argument
+            android:name="total"
+            app:argType="float" />
         <action
             android:id="@+id/action_resultsFragment_to_startPageActivity"
             app:destination="@id/startPageActivity" />
