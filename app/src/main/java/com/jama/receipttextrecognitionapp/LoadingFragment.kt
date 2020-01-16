@@ -15,6 +15,9 @@ import java.io.File
 
 class LoadingFragment : Fragment() {
 
+    lateinit var successResponse: String
+    lateinit var failureResponse: String
+
     private lateinit var rootView: View
 
     override fun onCreateView(

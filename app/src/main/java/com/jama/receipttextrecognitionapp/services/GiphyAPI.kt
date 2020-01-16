@@ -3,7 +3,6 @@ package com.jama.receipttextrecognitionapp.services
 import com.jama.receipttextrecognitionapp.model.Giphy
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -12,15 +11,15 @@ import retrofit2.http.Query
 const val GIPHY_API_KEY = "dc6zaTOxFJmzC"
 const val BASE_URL = "http://api.giphy.com/v1/gifs/"
 
-interface JsonPlaceHolderAPI {
+interface GiphyAPI {
 
     @GET("random")
-    fun getGif(
+    suspend fun getGif(
         @Query("tag") tag: String
-    ): Call<Giphy>
+    ): Giphy
 
     companion object {
-        operator fun invoke(): JsonPlaceHolderAPI {
+        operator fun invoke(): GiphyAPI {
             val requestInterceptor = Interceptor { chain ->
                 val url = chain.request()
                     .url()
@@ -45,7 +44,7 @@ interface JsonPlaceHolderAPI {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(JsonPlaceHolderAPI::class.java)
+                .create(GiphyAPI::class.java)
         }
     }
 
