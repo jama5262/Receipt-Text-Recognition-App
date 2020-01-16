@@ -6,6 +6,7 @@ import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.util.Rational
 import android.util.Size
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.camera.core.*
 import androidx.core.app.ActivityCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
 import com.google.firebase.ml.vision.FirebaseVision
@@ -34,6 +36,8 @@ class CameraFragment : Fragment() {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_camera, container, false)
 
+        rootView.textViewMessage.visibility = View.GONE
+
         rootView.buttonCapture.setOnClickListener {
             capture()
         }
@@ -52,7 +56,10 @@ class CameraFragment : Fragment() {
     }
 
     private fun startCamera() {
-        val previewConfig = PreviewConfig.Builder().build()
+        val previewConfig = PreviewConfig.Builder()
+            .setTargetAspectRatio(Rational (rootView.textureView.width, rootView.textureView.height))
+            .setTargetResolution(Size (rootView.textureView.width, rootView.textureView.height))
+            .build()
         val preview = Preview(previewConfig)
 
         preview.setOnPreviewOutputUpdateListener {
@@ -62,6 +69,7 @@ class CameraFragment : Fragment() {
 
         val imageCaptureConfig = ImageCaptureConfig.Builder()
             .setTargetRotation(activity!!.windowManager.defaultDisplay.rotation)
+            .setCaptureMode(ImageCapture.CaptureMode.MIN_LATENCY)
             .build()
 
         imageCapture = ImageCapture(imageCaptureConfig)
@@ -71,6 +79,7 @@ class CameraFragment : Fragment() {
 
     private fun capture() {
         rootView.progressBar.visibility = View.VISIBLE
+        rootView.textViewMessage.visibility = View.VISIBLE
         rootView.buttonCapture.isEnabled = false
         val file = File(activity!!.externalMediaDirs.first(), "${System.currentTimeMillis()}.jpg")
         imageCapture.takePicture(file,
@@ -79,21 +88,16 @@ class CameraFragment : Fragment() {
                                      message: String, exc: Throwable?) {
                     Log.e("jjj", "error -> $message")
                     rootView.progressBar.visibility = View.GONE
+                    rootView.textViewMessage.visibility = View.GONE
                 }
                 override fun onImageSaved(file: File) {
-                    Log.e("jjj", "error -> ${file.absolutePath}")
                     rootView.progressBar.visibility = View.GONE
-                    rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment)
+                    rootView.textViewMessage.visibility = View.GONE
+                    Log.e("jjj", "success -> ${file.absolutePath}")
+                    val bundle = bundleOf("imagePath" to file.absolutePath)
+                    rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)
                 }
             })
-    }
-
-    private fun rotationDegreesToFirebaseRotation(rotationDegrees: Int) = when (rotationDegrees) {
-        0 -> FirebaseVisionImageMetadata.ROTATION_0
-        90 -> FirebaseVisionImageMetadata.ROTATION_90
-        180 -> FirebaseVisionImageMetadata.ROTATION_180
-        270 -> FirebaseVisionImageMetadata.ROTATION_270
-        else -> throw IllegalArgumentException("Rotation $rotationDegrees not supported")
     }
 
     private fun checkPermissions() {
