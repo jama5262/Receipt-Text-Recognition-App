@@ -1,4 +1,4 @@
-package com.jama.receipttextrecognitionapp
+package com.jama.receipttextrecognitionapp.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.jama.receipttextrecognitionapp.R
 import com.jama.receipttextrecognitionapp.services.GiphyAPI
 import kotlinx.android.synthetic.main.fragment_results.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -26,6 +27,8 @@ class ResultsFragment : Fragment() {
         rootView.customButtonTryAgain.visibility = View.GONE
         rootView.imageView.visibility = View.GONE
         rootView.progressBar.visibility = View.GONE
+
+//        rootView.textViewTotal.text = arguments?.getFloat("total").toString()
 
         rootView.customButtonYes.setOnClickListener {
             disableButtons()

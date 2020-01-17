@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultsFragment">
+    tools:context=".fragments.ResultsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,9 +15,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_bold"
-            android:text="TextView"
+            android:text="300.0"
             android:textColor="@android:color/background_dark"
-            android:textSize="40sp"
+            android:textSize="45sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toTopOf="@+id/guideline6" />
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="37dp" />
+            app:layout_constraintGuide_begin="26dp" />
 
         <com.jama.receipttextrecognitionapp.custom_views.CustomButton
             android:id="@+id/customButtonYes"
@@ -72,7 +72,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/comfortaa_bold"
             android:text="Was I Right ?"
             android:textColor="@android:color/background_dark"
