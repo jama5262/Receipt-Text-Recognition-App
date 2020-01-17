@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startPageActivity">
+
+    <fragment
+        android:id="@+id/startPageActivity"
+        android:name="com.jama.receipttextrecognitionapp.fragments.StartPageFragement"
+        android:label="fragment_start_page"
+        tools:layout="@layout/fragment_start_page">
+        <action
+            android:id="@+id/action_startPageActivity_to_cameraActivity"
+            app:destination="@id/cameraActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraActivity"
+        android:name="com.jama.receipttextrecognitionapp.fragments.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera"
+        app:startDestination="@id/action_cameraActivity_to_loadingFragment">
+        <action
+            android:id="@+id/action_cameraActivity_to_loadingFragment"
+            app:destination="@id/loadingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/cameraActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.jama.receipttextrecognitionapp.fragments.LoadingFragment"
+        android:label="fragment_loading"
+        tools:layout="@layout/fragment_loading" >
+        <argument
+            android:name="imagePath"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_loadingFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/loadingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.jama.receipttextrecognitionapp.fragments.ResultsFragment"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" >
+        <argument
+            android:name="total"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_resultsFragment_to_startPageActivity"
+            app:destination="@id/startPageActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+</navigation>

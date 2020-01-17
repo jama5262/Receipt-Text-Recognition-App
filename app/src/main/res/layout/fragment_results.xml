@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ResultsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="0.0"
+            android:textColor="@android:color/background_dark"
+            android:textSize="45sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="26dp" />
+
+        <com.jama.receipttextrecognitionapp.custom_views.CustomButton
+            android:id="@+id/customButtonYes"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Yes"
+            app:layout_constraintEnd_toStartOf="@+id/customButtonNo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <com.jama.receipttextrecognitionapp.custom_views.CustomButton
+            android:id="@+id/customButtonNo"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="No"
+            app:buttonColor="red"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/customButtonYes"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="29dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="Was I Right ?"
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTotal" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/customButtonYes"
+            tools:src="@tools:sample/avatars[0]" />
+
+        <com.jama.receipttextrecognitionapp.custom_views.CustomButton
+            android:id="@+id/customButtonTryAgain"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Try Again"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
