@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_bold"
-            android:text="300.0"
+            android:text="0.0"
             android:textColor="@android:color/background_dark"
             android:textSize="45sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"

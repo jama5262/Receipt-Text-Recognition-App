@@ -88,8 +88,8 @@ class CameraFragment : Fragment() {
                 }
                 override fun onImageSaved(file: File) {
                     rootView.progressBar.visibility = View.GONE
-                    val t = String(Character.toChars(0x1F60A))
-                    rootView.textViewMessage.text = "OK got it $t"
+                    val emoji = String(Character.toChars(0x1F44D))
+                    rootView.textViewMessage.text = "OK got it $emoji"
                     Log.e("jjj", "success -> ${file.absolutePath}")
                     val bundle = bundleOf("imagePath" to file.absolutePath)
                     rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)

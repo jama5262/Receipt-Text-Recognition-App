@@ -1,11 +1,15 @@
 package com.jama.receipttextrecognitionapp.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import com.jama.receipttextrecognitionapp.R
 import com.jama.receipttextrecognitionapp.services.GiphyAPI
 import kotlinx.android.synthetic.main.fragment_results.view.*
@@ -28,16 +32,20 @@ class ResultsFragment : Fragment() {
         rootView.imageView.visibility = View.GONE
         rootView.progressBar.visibility = View.GONE
 
-//        rootView.textViewTotal.text = arguments?.getFloat("total").toString()
+        rootView.textViewTotal.text = arguments?.getFloat("total").toString()
 
         rootView.customButtonYes.setOnClickListener {
             disableButtons()
             loadGif("success")
+            showAnimation(0)
+            rootView.textViewTotal.setTextColor(ContextCompat.getColor(rootView.context, R.color.colorPrimary))
         }
 
         rootView.customButtonNo.setOnClickListener {
             disableButtons()
             loadGif("failure")
+            showAnimation(1)
+            rootView.textViewTotal.setTextColor(ContextCompat.getColor(rootView.context, R.color.colorError))
         }
 
         rootView.customButtonTryAgain.setOnClickListener {
@@ -45,6 +53,17 @@ class ResultsFragment : Fragment() {
         }
 
         return rootView
+    }
+
+    private fun showAnimation(value: Int) {
+        YoYo.with(
+            when(value) {
+                0 -> Techniques.Tada
+                else -> Techniques.Shake
+            }
+        )
+            .duration(1000)
+            .playOn(rootView.textViewTotal)
     }
 
     private fun disableButtons() {
