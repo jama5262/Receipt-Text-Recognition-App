@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.google.firebase.ml.vision.FirebaseVision
@@ -22,7 +23,6 @@ class LoadingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         rootView =  inflater.inflate(R.layout.fragment_loading, container, false)
 
         detectText()
@@ -49,6 +49,8 @@ class LoadingFragment : Fragment() {
             }
             .addOnFailureListener {
                 Log.e("jjj", "error -> ${it.message}")
+                Toast.makeText(rootView.context, "OOps, there was an error detecting the total cost of receipt, please try again", Toast.LENGTH_LONG).show()
+                activity?.onBackPressed()
             }
     }
 }

@@ -1,7 +1,5 @@
 package com.jama.receipttextrecognitionapp.fragments
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.util.Rational
@@ -10,8 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.camera.core.*
-import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
@@ -22,14 +20,12 @@ import java.io.File
 class CameraFragment : Fragment() {
 
     private lateinit var rootView: View
-    private val CAMERA_PERMISSION_REQUEST_CODE = 1
     private lateinit var imageCapture: ImageCapture
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_camera, container, false)
 
         rootView.textViewMessage.visibility = View.GONE
@@ -82,9 +78,8 @@ class CameraFragment : Fragment() {
             object : ImageCapture.OnImageSavedListener {
                 override fun onError(error: ImageCapture.ImageCaptureError,
                                      message: String, exc: Throwable?) {
-                    Log.e("jjj", "error -> $message")
-                    rootView.progressBar.visibility = View.GONE
-                    rootView.textViewMessage.visibility = View.GONE
+                    Toast.makeText(rootView.context, "OOps, there was an error taking the picture, please try again", Toast.LENGTH_LONG).show()
+                    activity?.onBackPressed()
                 }
                 override fun onImageSaved(file: File) {
                     rootView.progressBar.visibility = View.GONE

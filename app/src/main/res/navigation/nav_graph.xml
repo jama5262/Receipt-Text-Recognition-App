@@ -45,6 +45,10 @@
         <action
             android:id="@+id/action_loadingFragment_to_resultsFragment"
             app:destination="@id/resultsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/loadingFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -58,6 +62,10 @@
             app:argType="float" />
         <action
             android:id="@+id/action_resultsFragment_to_startPageActivity"
-            app:destination="@id/startPageActivity" />
+            app:destination="@id/startPageActivity"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>
