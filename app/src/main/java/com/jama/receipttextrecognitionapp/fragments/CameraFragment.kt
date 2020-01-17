@@ -1,7 +1,5 @@
 package com.jama.receipttextrecognitionapp.fragments
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.util.Rational
@@ -10,8 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.camera.core.*
-import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
@@ -22,14 +20,12 @@ import java.io.File
 class CameraFragment : Fragment() {
 
     private lateinit var rootView: View
-    private val CAMERA_PERMISSION_REQUEST_CODE = 1
     private lateinit var imageCapture: ImageCapture
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_camera, container, false)
 
         rootView.textViewMessage.visibility = View.GONE
@@ -43,7 +39,7 @@ class CameraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkPermissions()
+        startCamera()
     }
 
     override fun onDestroyView() {
@@ -82,9 +78,8 @@ class CameraFragment : Fragment() {
             object : ImageCapture.OnImageSavedListener {
                 override fun onError(error: ImageCapture.ImageCaptureError,
                                      message: String, exc: Throwable?) {
-                    Log.e("jjj", "error -> $message")
-                    rootView.progressBar.visibility = View.GONE
-                    rootView.textViewMessage.visibility = View.GONE
+                    Toast.makeText(rootView.context, "OOps, there was an error taking the picture, please try again", Toast.LENGTH_LONG).show()
+                    activity?.onBackPressed()
                 }
                 override fun onImageSaved(file: File) {
                     rootView.progressBar.visibility = View.GONE
@@ -95,40 +90,5 @@ class CameraFragment : Fragment() {
                     rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)
                 }
             })
-    }
-
-    private fun checkPermissions() {
-        if (ActivityCompat.checkSelfPermission(rootView.context, Manifest.permission.CAMERA)
-            != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(rootView.context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE), CAMERA_PERMISSION_REQUEST_CODE)
-        } else {
-            startCamera()
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            CAMERA_PERMISSION_REQUEST_CODE -> {
-                // If request is cancelled, the result arrays are empty.
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                    startCamera()
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                    activity!!.onBackPressed()
-                }
-                return
-            }
-            else -> {
-                // Ignore all other requests.
-            }
-        }
     }
 }
