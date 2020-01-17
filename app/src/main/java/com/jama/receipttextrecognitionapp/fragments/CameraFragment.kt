@@ -43,7 +43,7 @@ class CameraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkPermissions()
+        startCamera()
     }
 
     override fun onDestroyView() {
@@ -95,40 +95,5 @@ class CameraFragment : Fragment() {
                     rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)
                 }
             })
-    }
-
-    private fun checkPermissions() {
-        if (ActivityCompat.checkSelfPermission(rootView.context, Manifest.permission.CAMERA)
-            != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(rootView.context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE), CAMERA_PERMISSION_REQUEST_CODE)
-        } else {
-            startCamera()
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            CAMERA_PERMISSION_REQUEST_CODE -> {
-                // If request is cancelled, the result arrays are empty.
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                    startCamera()
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                    activity!!.onBackPressed()
-                }
-                return
-            }
-            else -> {
-                // Ignore all other requests.
-            }
-        }
     }
 }
