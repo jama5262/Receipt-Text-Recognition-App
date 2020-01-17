@@ -2,25 +2,17 @@
 
 A simple boring app that detects the total cost of a receipt
 
-# Table of Contents
-- [Built With](#built-with)
-- [Demos](#demos)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Support](#support)
-- [License](#license)
+## Demos
+
+Success | Failure
+------------ | ------------- 
+<img src="https://github.com/jama5262/Receipt-Text-Recognition-App/blob/master/app/src/main/res/drawable-v24/image1.gif" alt="alt text" height="500px"> | <img src="https://github.com/jama5262/Receipt-Text-Recognition-App/blob/master/app/src/main/res/drawable-v24/image2.gif" height="500px">
 
 ## Built-With
 
 - [Firebase ML](https://firebase.google.com/)
 - [Android Jetpack Components (Navigation, CameraX)](https://developer.android.com/jetpack/?gclid=CjwKCAjwldHsBRAoEiwAd0JybTG_zEnM0YG2eQRWFpgvDILuP1tGH5VIM-reIThtR7Dd4zGs-SFsaxoCbjsQAvD_BwE)
 - [Glide](https://github.com/bumptech/glide)
-
-## Demos
-
-Success | Failure
------------- | ------------- 
-<img src="https://github.com/jama5262/Receipt-Text-Recognition-App/blob/master/app/src/main/res/drawable-v24/image1.gif" alt="alt text" height="500px"> | <img src="https://github.com/jama5262/Receipt-Text-Recognition-App/blob/master/app/src/main/res/drawable-v24/image2.gif" height="500px">
 
 ## Installation
 Before installation, you must have installed the latest version of [Android Studio](https://developer.android.com/studio) for this project to works on your machine
