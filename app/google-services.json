@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "787369339436",
+    "firebase_url": "https://tidal-reactor-128509.firebaseio.com",
+    "project_id": "tidal-reactor-128509",
+    "storage_bucket": "tidal-reactor-128509.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787369339436:android:1089d5a5ea7357fa71ff89",
+        "android_client_info": {
+          "package_name": "com.jama.receipttextrecognitionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787369339436-58gj3s0iesneoq9oo73bp0js66vtfpj4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jama.receipttextrecognitionapp",
+            "certificate_hash": "4361da8d74a907159af7de4ddb0850941cbc2ddc"
+          }
+        },
+        {
+          "client_id": "787369339436-4bnclf5k4ib39e3ccmc41nqf1ai63jl3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8RbsZS7s4ZxXzbgYClcy_Fmx1PEZ0Hrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787369339436-4bnclf5k4ib39e3ccmc41nqf1ai63jl3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
