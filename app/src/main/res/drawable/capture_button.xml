@@ -16,14 +16,14 @@
         <layer-list>
             <item >
                 <shape android:shape="oval">
-                    <solid android:color="#37474F"/>
+                    <solid android:color="#9E9E9E"/>
                     <corners android:radius="13dp"/>
                 </shape>
             </item>
 
             <item android:bottom="4.5dp">
                 <shape android:shape="oval">
-                    <solid android:color="#78909C"/>
+                    <solid android:color="#BDBDBD"/>
                     <corners android:radius="13dp"/>
                 </shape>
             </item>

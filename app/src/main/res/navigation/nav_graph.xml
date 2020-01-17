@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startPageActivity">
+    app:startDestination="@id/resultsFragment">
 
     <fragment
         android:id="@+id/startPageActivity"
-        android:name="com.jama.receipttextrecognitionapp.StartPageFragement"
+        android:name="com.jama.receipttextrecognitionapp.fragments.StartPageFragement"
         android:label="fragment_start_page"
         tools:layout="@layout/fragment_start_page">
         <action
@@ -20,9 +20,10 @@
     </fragment>
     <fragment
         android:id="@+id/cameraActivity"
-        android:name="com.jama.receipttextrecognitionapp.CameraFragment"
+        android:name="com.jama.receipttextrecognitionapp.fragments.CameraFragment"
         android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera" >
+        tools:layout="@layout/fragment_camera"
+        app:startDestination="@id/action_cameraActivity_to_loadingFragment">
         <action
             android:id="@+id/action_cameraActivity_to_loadingFragment"
             app:destination="@id/loadingFragment"
@@ -35,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/loadingFragment"
-        android:name="com.jama.receipttextrecognitionapp.LoadingFragment"
+        android:name="com.jama.receipttextrecognitionapp.fragments.LoadingFragment"
         android:label="fragment_loading"
         tools:layout="@layout/fragment_loading" >
         <argument
@@ -49,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultsFragment"
-        android:name="com.jama.receipttextrecognitionapp.ResultsFragment"
+        android:name="com.jama.receipttextrecognitionapp.fragments.ResultsFragment"
         android:label="fragment_results"
         tools:layout="@layout/fragment_results" >
         <argument

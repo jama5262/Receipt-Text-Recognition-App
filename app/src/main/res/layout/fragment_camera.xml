@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CameraFragment">
+    tools:context=".fragments.CameraFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -49,6 +49,7 @@
             android:layout_marginTop="24dp"
             android:background="#7A000000"
             android:fontFamily="@font/comfortaa_bold"
+            android:padding="5dp"
             android:text="Please hold the camera steady"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"

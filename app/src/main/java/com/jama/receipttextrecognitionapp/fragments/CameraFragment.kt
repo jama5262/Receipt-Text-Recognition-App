@@ -1,10 +1,8 @@
-package com.jama.receipttextrecognitionapp
+package com.jama.receipttextrecognitionapp.fragments
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.opengl.Visibility
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.util.Rational
 import android.util.Size
@@ -17,9 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
-import com.google.firebase.ml.vision.FirebaseVision
-import com.google.firebase.ml.vision.common.FirebaseVisionImage
-import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
+import com.jama.receipttextrecognitionapp.R
 import kotlinx.android.synthetic.main.fragment_camera.view.*
 import java.io.File
 
@@ -92,7 +88,8 @@ class CameraFragment : Fragment() {
                 }
                 override fun onImageSaved(file: File) {
                     rootView.progressBar.visibility = View.GONE
-                    rootView.textViewMessage.visibility = View.GONE
+                    val emoji = String(Character.toChars(0x1F44D))
+                    rootView.textViewMessage.text = "OK got it $emoji"
                     Log.e("jjj", "success -> ${file.absolutePath}")
                     val bundle = bundleOf("imagePath" to file.absolutePath)
                     rootView.findNavController().navigate(R.id.action_cameraActivity_to_loadingFragment, bundle)

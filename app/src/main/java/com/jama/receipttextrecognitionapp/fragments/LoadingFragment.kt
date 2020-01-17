@@ -1,4 +1,4 @@
-package com.jama.receipttextrecognitionapp
+package com.jama.receipttextrecognitionapp.fragments
 
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
+import com.jama.receipttextrecognitionapp.R
 import java.io.File
 
 class LoadingFragment : Fragment() {
@@ -44,7 +45,7 @@ class LoadingFragment : Fragment() {
                 }
                 val total = arrayMatch.max() ?: 0f
                 val bundle = bundleOf("total" to total)
-                rootView.findNavController().navigate(R.id.action_loadingFragment_to_resultsFragment)
+                rootView.findNavController().navigate(R.id.action_loadingFragment_to_resultsFragment, bundle)
             }
             .addOnFailureListener {
                 Log.e("jjj", "error -> ${it.message}")
