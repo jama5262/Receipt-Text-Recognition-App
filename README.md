@@ -11,8 +11,10 @@ Success | Failure
 ## Built-With
 
 - [Firebase ML](https://firebase.google.com/)
+- [Retrofit](https://square.github.io/retrofit/)
 - [Android Jetpack Components (Navigation, CameraX)](https://developer.android.com/jetpack/?gclid=CjwKCAjwldHsBRAoEiwAd0JybTG_zEnM0YG2eQRWFpgvDILuP1tGH5VIM-reIThtR7Dd4zGs-SFsaxoCbjsQAvD_BwE)
 - [Glide](https://github.com/bumptech/glide)
+- [Giphy API](https://developers.giphy.com/)
 
 ## Installation
 Before installation, you must have installed the latest version of [Android Studio](https://developer.android.com/studio) for this project to works on your machine
