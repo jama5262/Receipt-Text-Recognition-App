@@ -2,6 +2,8 @@
 
 A simple boring app that detects the total cost of a receipt
 
+Check out Figma designs [here](https://www.figma.com/file/3Tj4CA1v35Fys5QGKY4mSz/Receipt-Text-Recognition-App?node-id=0%3A1) 🎨
+
 ## Demos
 
 Success | Failure
